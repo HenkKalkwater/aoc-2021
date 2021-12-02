@@ -1,0 +1,2 @@
+Set-Cookie: session=<your-session-token-here>; Domain=adventofcode.com
+
