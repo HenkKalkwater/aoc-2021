@@ -7,12 +7,14 @@ import std.string;
 
 int compute(string data)() {
 	immutable string[] lines = data.splitLines();
+
+	// The following naive implementation eats at least 8GiB memory on my PC
+	/*
 	int count = 0;
 	int number = 0;
 	int lastNumber = int.max;
 
-	// The following naive implementation eats at least 8GiB memory on my PC
-	/*static foreach(line; lines) {
+	static foreach(line; lines) {
 		number = to!string(line);
 		pragma(msg, number, lastNumber);
 		static if (lastNumber < number) count++;
