@@ -21,22 +21,22 @@ int compute(string input)() {
 
 	Pos result = input.lineSplitter
 		.map!((line) {
-				string cmd;
-				int amount;
-				assert(line.formattedRead!"%s %d"(cmd, amount) == 2);
+			string cmd;
+			int amount;
+			assert(line.formattedRead!"%s %d"(cmd, amount) == 2);
 
-				switch(cmd) {
-				case "forward":
-					return createPos(amount,0);
-				case "down":
-					return createPos(0,amount);
-				case "up":
-					return createPos(0,-amount);
-				default:
-					return createPos(int.min,int.min);
-				}
-				return begin;
-			})
+			switch(cmd) {
+			case "forward":
+				return createPos(amount,0);
+			case "down":
+				return createPos(0,amount);
+			case "up":
+				return createPos(0,-amount);
+			default:
+				return createPos(int.min,int.min);
+			}
+			return begin;
+		})
 		.fold!((a, b) { 
 					return createPos(a.x + b.x, a.d + b.d); 
 				})( begin);
